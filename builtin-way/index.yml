@@ -27,7 +27,8 @@ tags:
 schemes:
 - "http"
 paths:
-  $ref: "./test.yml"
+  /kk1:  
+    $ref: "./test.yml"
   /pet:
     post:
       tags:

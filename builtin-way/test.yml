@@ -1,20 +1,19 @@
-/akk:
-  get:
-    tags:
-    - "kk"
-    summary: "Add a new pet to the store"
-    description: ""
-    operationId: "addPet2"
-    consumes:
-    - "application/json"
-    - "application/xml"
-    produces:
-    - "application/xml"
-    - "application/json"
-    responses:
-      405:
-        description: "Invalid input"
-    security:
-    - petstore_auth:
-      - "write:pets"
-      - "read:pets"
+get:
+  tags:
+  - "kk"
+  summary: "Add a new pet to the store"
+  description: ""
+  operationId: "addPet2"
+  consumes:
+  - "application/json"
+  - "application/xml"
+  produces:
+  - "application/xml"
+  - "application/json"
+  responses:
+    405:
+      description: "Invalid input"
+  security:
+  - petstore_auth:
+    - "write:pets"
+    - "read:pets"
