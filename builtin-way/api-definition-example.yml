@@ -1,6 +1,6 @@
 get:
   tags:
-  - "kk"
+  - "example"
   summary: "Add a new pet to the store"
   description: ""
   operationId: "addPet2"
