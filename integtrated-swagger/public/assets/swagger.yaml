@@ -2,7 +2,7 @@ swagger: '2.0'
 info:
   version: 0.0.1
   title: Enterprise API
-  description: Change Healthcare's Enterprise API
+  description: Enterprise API
   license:
     name: MIT
     url: 'https://opensource.org/licenses/MIT'
