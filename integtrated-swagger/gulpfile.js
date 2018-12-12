@@ -8,5 +8,5 @@ gulp.task('default', function() {
       basepath: '@file',
       indent: true
     }))
-    .pipe(gulp.dest('./dist'));
+    .pipe(gulp.dest('./public'));
 });

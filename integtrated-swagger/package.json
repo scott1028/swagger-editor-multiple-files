@@ -4,10 +4,9 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "edit": "cross-env npm-run-all -s build copy && swagger_swagger_editorDir=node_modules/swagger-editor swagger_swagger_fileName=dist/swagger.yaml swagger project edit",
+    "edit": "cross-env npm-run-all -s build && swagger_swagger_editorDir=node_modules/swagger-editor swagger_swagger_fileName=public/swagger.yaml swagger project edit",
     "build": "gulp",
-    "copy": "cp ./dist/swagger.yaml ./public/",
-    "ui": "npm-run-all -s build copy swagger",
+    "ui": "npm-run-all -s build swagger",
     "swagger": "node ./server.js",
     "api": "node ./src/fake/config.js",
     "lift": "npm-run-all -p api ui",
