@@ -25,13 +25,14 @@
         description: OK
         schema:
           $ref: '#/definitions/Users'
+
 '/users/{userId}':
   parameters:
     - name: userId
       in: path
       required: true
       description: ID of user that we want to find
-      type: string
+      type: number
   get:
     tags:
       - Users

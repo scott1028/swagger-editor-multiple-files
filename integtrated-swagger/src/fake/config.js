@@ -1,34 +1,53 @@
-// // config.js
-// module.exports = () => {
-//   const data = { users: [] };
-//   // Create 1000 users
-//   for (let i = 0; i < 1000; i++) {
-//     data.users.push({ id: i, name: 1 });
-//   }
-//   return data;
-// }
-
+'use strict';
 
 var express = require('express');
+var cors = require('cors')
+var router = express.Router();
 var app = express();
 const port = 3001;
+
+// fake data
+const users = require('../fixtures/users')();
+const books = require('../fixtures/books.json');
+
+app.use(cors());
 
 app.get('/', function(req, res) {
   res.send('Hello Mock API!');
 });
 
-app.get('/users', function(req, res) {
-  res.send(require('../fixtures/users')());
+// api scheme
+router.get('/users', function(req, res) {
+  res.send(users);
 });
 
-app.post('/users', function(req, res) {
-  res.send(require('../fixtures/users')());
+router.post('/users', function(req, res) {
+  res.status(201).send({});
 });
 
-app.get('/books', function(req, res) {
-  res.send(require('../fixtures/books.json'));
+router.get('/users/:id', function(req, res) {
+  let data = users.filter(row => row.id == req.params.id);
+  if(data.length === 0) {
+    return res.status(404).send({});
+  }
+  res.send(data[0]);
 });
 
+router.delete('/users/:id', function(req, res) {
+  res.status(201).send({});
+});
+
+router.put('/users/:id', function(req, res) {
+  res.status(201).send({});
+});
+
+router.get('/users/:id/books', function(req, res) {
+  res.send(books);
+});
+
+app.use('/api', router);
+
+// bind to port of localhost
 app.listen(port, function() {
   console.log(`Mock-Api-Server listening on port ${port}!`);
 });

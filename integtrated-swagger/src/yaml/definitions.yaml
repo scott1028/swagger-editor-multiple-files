@@ -1,10 +1,10 @@
 User:
   required:
     - email
-    - _id
+    - id
   properties:
-    _id:
-      type: string
+    id:
+      type: number
       uniqueItems: true
     email:
       type: string
@@ -13,6 +13,21 @@ User:
       type: string
     firstName:
       type: string
+
 Users:
   type: array
-  $ref: '#/definitions/User'
+  items:
+    $ref: '#/definitions/User'
+
+Book:
+  properties:
+    id:
+      type: number
+      uniqueItems: true
+    label:
+      type: string
+
+Books:
+  type: array
+  items:
+    $ref: '#/definitions/Book'

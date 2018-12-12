@@ -19,5 +19,6 @@ produces:
   - application/json
 paths:
   @@include('./paths/Users.yaml')
+  @@include('./paths/Books.yaml')
 definitions:
   @@include('./definitions.yaml')

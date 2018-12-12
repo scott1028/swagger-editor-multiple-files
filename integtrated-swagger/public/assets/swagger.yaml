@@ -45,13 +45,14 @@ paths:
           description: OK
           schema:
             $ref: '#/definitions/Users'
+
   '/users/{userId}':
     parameters:
       - name: userId
         in: path
         required: true
         description: ID of user that we want to find
-        type: string
+        type: number
     get:
       tags:
         - Users
@@ -85,14 +86,32 @@ paths:
           description: User is updated
           schema:
             $ref: '#/definitions/User'
+
+  '/users/{userId}/books':
+    parameters:
+      - name: userId
+        in: path
+        required: true
+        description: ID of user that we want to find
+        type: number
+    get:
+      tags:
+        - User's Books
+      summary: Get all boosk of this user in system
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Books'
+
 definitions:
   User:
     required:
       - email
-      - _id
+      - id
     properties:
-      _id:
-        type: string
+      id:
+        type: number
         uniqueItems: true
       email:
         type: string
@@ -101,6 +120,22 @@ definitions:
         type: string
       firstName:
         type: string
+
   Users:
     type: array
-    $ref: '#/definitions/User'
+    items:
+      $ref: '#/definitions/User'
+
+  Book:
+    properties:
+      id:
+        type: number
+        uniqueItems: true
+      label:
+        type: string
+
+  Books:
+    type: array
+    items:
+      $ref: '#/definitions/Book'
+
