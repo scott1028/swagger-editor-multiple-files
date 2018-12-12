@@ -1,3 +1,4 @@
 dist/
 node_modules/
 api/
+public/swagger.yaml
