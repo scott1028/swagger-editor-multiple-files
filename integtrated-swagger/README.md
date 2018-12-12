@@ -27,3 +27,8 @@ $ yarn lift:edit
 #### src/yaml/**
 
 - Your swagger yaml file is here.
+
+### Reference
+
+- Swagger Editor, we used from `node_modules/swagger-editor`
+- Swagger UI, we used from `public/**` created by `swagger-ui` of npm package and copy the `dist` folder to `public` here

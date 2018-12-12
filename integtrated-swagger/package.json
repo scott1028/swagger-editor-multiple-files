@@ -6,7 +6,7 @@
   "scripts": {
     "edit": "cross-env npm-run-all -s build copy && swagger_swagger_editorDir=node_modules/swagger-editor swagger_swagger_fileName=dist/swagger.yaml swagger project edit",
     "build": "gulp",
-    "copy": "cp ./dist/swagger.yaml ./public/assets",
+    "copy": "cp ./dist/swagger.yaml ./public/",
     "ui": "npm-run-all -s build copy swagger",
     "swagger": "node ./server.js",
     "api": "node ./src/fake/config.js",
