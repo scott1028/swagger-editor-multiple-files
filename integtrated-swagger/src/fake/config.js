@@ -55,6 +55,20 @@ app.use('/api', router);
 // optional Way#2: api scheme provided by json-server
 app.use('/api-v2', jsonServerRouter);
 
+// override some api for making it correspond to your client,
+// if you override path is not existing in json-server-database, it will return 404 status code.
+jsonServerRouter.render = (req, res) => {
+  if(req.url.match(/^\/posts\/{0,1}$/) && req.method.match(/^GET$/)) {
+    res.status(200).jsonp({
+      posts: res.locals.data,
+      message: 'This is custom response format!',
+    });
+  }
+  else {
+    res.jsonp(res.locals.data);
+  }
+};
+
 // bind to port of localhost
 app.listen(port, function() {
   console.log(`Mock-Api-Server listening on port ${port}!`);

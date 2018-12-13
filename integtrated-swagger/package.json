@@ -9,8 +9,10 @@
     "ui": "npm-run-all -s build swagger",
     "swagger": "node ./server.js",
     "api": "node ./src/fake/config.js",
+    "api:debug": "node --inspect-brk ./src/fake/config.js",
     "lift": "npm-run-all -p api ui",
-    "lift:edit": "npm-run-all -p api edit"
+    "lift:edit": "npm-run-all -p api edit",
+    "lift:debug": "npm-run-all -p api:debug edit"
   },
   "devDependencies": {
     "cross-env": "^5.1.4",
