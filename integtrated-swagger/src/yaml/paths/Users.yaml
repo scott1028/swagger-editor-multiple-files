@@ -12,7 +12,7 @@
     produces:
       - application/json
     responses:
-      '200':
+      '201':
         description: New user is created
         schema:
           $ref: '#/definitions/User'
@@ -62,7 +62,7 @@
         schema:
           $ref: '#/definitions/User'
     responses:
-      '200':
+      '201':
         description: User is updated
         schema:
           $ref: '#/definitions/User'

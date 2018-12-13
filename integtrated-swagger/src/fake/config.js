@@ -1,5 +1,9 @@
 'use strict';
 
+const jsonServer = require('json-server');
+const jsonServerRouter = jsonServer.router('src/fixtures/json-server-db.json');  // fake data from json-server
+const jsonServerMiddlewares = jsonServer.defaults();  // include cors, json-parse, log, etc
+
 var express = require('express');
 var cors = require('cors')
 var router = express.Router();
@@ -10,13 +14,14 @@ const port = 3001;
 const users = require('../fixtures/users')();
 const books = require('../fixtures/books.json');
 
-app.use(cors());
+// allow cors for swagger
+app.use(jsonServerMiddlewares);  // app.use(cors());
 
 app.get('/', function(req, res) {
   res.send('Hello Mock API!');
 });
 
-// api scheme
+// optional Way#1: api scheme provided by pure-express
 router.get('/users', function(req, res) {
   res.send(users);
 });
@@ -46,6 +51,9 @@ router.get('/users/:id/books', function(req, res) {
 });
 
 app.use('/api', router);
+
+// optional Way#2: api scheme provided by json-server
+app.use('/api-v2', jsonServerRouter);
 
 // bind to port of localhost
 app.listen(port, function() {
