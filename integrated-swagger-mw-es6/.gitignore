@@ -1,0 +1,5 @@
+dist/
+node_modules/
+api/
+public/swagger.yaml
+src/backend/app.dist.js

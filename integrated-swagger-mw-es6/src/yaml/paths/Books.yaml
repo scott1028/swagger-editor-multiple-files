@@ -1,0 +1,16 @@
+'/users/{userId}/books':
+  parameters:
+    - name: userId
+      in: path
+      required: true
+      description: ID of user that we want to find
+      type: number
+  get:
+    tags:
+      - User's Books
+    summary: Get all boosk of this user in system
+    responses:
+      '200':
+        description: OK
+        schema:
+          $ref: '#/definitions/Books'

@@ -28,9 +28,9 @@ $ yarn lift:edit
 
 ### Project Structure
 
-##### src/fake/config.js
+##### src/backend/config.js
 
-- Your fake data server is here.
+- Your api server is here.
 
 ##### src/fixtures/**
 

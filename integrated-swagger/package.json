@@ -8,8 +8,8 @@
     "build": "gulp",
     "ui": "npm-run-all -s build swagger",
     "swagger": "node ./server.js",
-    "api": "node ./src/fake/config.js",
-    "api:debug": "node --inspect-brk ./src/fake/config.js",
+    "api": "node ./src/backend/config.js",
+    "api:debug": "node --inspect-brk ./src/backend/config.js",
     "lift": "npm-run-all -p api ui",
     "lift:edit": "npm-run-all -p api edit",
     "lift:debug": "npm-run-all -p api:debug edit"

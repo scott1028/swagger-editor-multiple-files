@@ -4,19 +4,27 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
+    "es5": "webpack --config config.js",
     "edit": "cross-env npm-run-all -s build && swagger_swagger_editorDir=node_modules/swagger-editor swagger_swagger_fileName=public/swagger.yaml swagger project edit",
     "build": "gulp",
-    "api": "node ./src/backend/app.js",
-    "api:debug": "node --inspect-brk ./src/backend/app.js",
+    "api": "npm-run-all -s es5 && node ./src/backend/app.dist.js",
+    "api:debug": "npm-run-all -s es5 && node --inspect-brk ./src/backend/app.dist.js",
     "lift:edit": "npm-run-all -s edit",
     "lift": "npm-run-all -p build api"
   },
   "devDependencies": {
+    "@babel/core": "^7.2.2",
+    "@babel/preset-env": "^7.2.0",
+    "babel-loader": "^8.0.4",
     "cross-env": "^5.1.4",
     "gulp": "^3.9.1",
     "gulp-cli": "^2.0.1",
     "gulp-file-include": "^2.0.1",
-    "swagger": "^0.7.5"
+    "js-yaml-loader": "^1.0.1",
+    "swagger": "^0.7.5",
+    "webpack": "^4.27.1",
+    "webpack-cli": "^3.1.2",
+    "webpack-node-externals": "^1.7.2"
   },
   "dependencies": {
     "cors": "^2.8.5",

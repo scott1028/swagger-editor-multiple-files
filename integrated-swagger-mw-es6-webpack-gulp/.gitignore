@@ -1,0 +1,7 @@
+dist/
+node_modules/
+api/
+public
+src/backend/app.dist.js
+.hot/
+.env
