@@ -9,7 +9,9 @@ const jsYaml = require('js-yaml');
 
 gulp.task('webpack', done => {
   gulp.src('./config.js')  // this is similar to one of multiple entrypoint of webpack
-    .pipe(webpack(require('./config.js')))
+    .pipe(webpack({
+      config: require('./config.js'),
+    }))  // multiple configs support ref: https://github.com/shama/webpack-stream#multi-compiler-support
     .pipe(gulp.dest('./dist'));  // this is similar to output.path of webpack
   done();
 });

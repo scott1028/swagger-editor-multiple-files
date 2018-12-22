@@ -5,7 +5,7 @@ const nodeExternals = require('webpack-node-externals');
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin')
 const path = require('path');
 
-const config = {
+const apiConfig = {
   mode: 'development',  // `development|production`, such as minify output, etc, it will set to `process.env.NODE_ENV`
   entry: {
     dist: [
@@ -43,7 +43,7 @@ const config = {
     ]
   },
   plugins: [
-    new webpack.HotModuleReplacementPlugin(),  // <-- make module.hot = { ... } in your entrypoint
+    new webpack.HotModuleReplacementPlugin(),  // <-- BTW config.devServer.hot = { ... } if for devServer of webpack without 'webpack/hot/poll?1000' mixin
     new webpack.NamedModulesPlugin(),
   ],
 };
@@ -51,11 +51,11 @@ const config = {
 // Ref: https://github.com/lorenwest/node-config/wiki/Environment-Variables
 // This will detect ./config/*** folder, it's a nodejs mechanism
 require('dotenv').config();
-config.mode = process.env.MODE || config.mode;
-if(config.mode === 'production') {
-  config.watch = false;
-  config.entry.dist.shift();
-  delete config.plugins;
+apiConfig.mode = process.env.MODE || apiConfig.mode;
+if(apiConfig.mode === 'production') {
+  apiConfig.watch = false;
+  apiConfig.entry.dist.shift();
+  delete apiConfig.plugins;
 }
 
-module.exports = config;
+module.exports = [apiConfig];
