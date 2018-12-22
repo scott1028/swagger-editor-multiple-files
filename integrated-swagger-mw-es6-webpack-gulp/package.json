@@ -8,8 +8,9 @@
     "build": "gulp webpack",
     "watch": "gulp",
     "api": "wait-on ./dist/app.dist.js && node ./dist/app.dist.js",
+    "api:edit": "wait-on ./dist/app.dist.js && cross-env SKIP_OPN=1 node ./dist/app.dist.js",
     "api:debug": "wait-on ./dist/app.dist.js && node --inspect-brk ./dist/app.dist.js",
-    "lift:edit": "npm-run-all -p watch api edit",
+    "lift:edit": "npm-run-all -p watch api:edit edit",
     "lift": "npm-run-all -p watch api",
     "prelift:edit": "cross-env rm -rf dist",
     "prelift": "cross-env rm -rf dist"

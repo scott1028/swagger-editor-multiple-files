@@ -26,5 +26,7 @@ if (module.hot) {
   });
 
   // only when developing this should be executed.
-  opn(`http://localhost:${port}/api-docs`);
+  if(!process.env.SKIP_OPN) {
+    opn(`http://localhost:${port}/api-docs`);
+  }
 };
