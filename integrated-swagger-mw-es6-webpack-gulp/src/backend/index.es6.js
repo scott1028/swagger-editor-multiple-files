@@ -4,7 +4,7 @@ import http from 'http';
 import opn from 'opn';
 import app from './app.es6';
 
-const port = 3000;
+const port = 2999;
 const server = http.createServer(app)
 
 let currentApp = app;
@@ -26,7 +26,8 @@ if (module.hot) {
   });
 
   // only when developing this should be executed.
-  if(!process.env.SKIP_OPN) {
-    opn(`http://localhost:${port}/api-docs`);
-  }
+  // this already was replaced by `browsersync`
+  // if(!process.env.SKIP_OPN) {
+  //  opn(`http://localhost:${port}/api-docs`);
+  // }
 };

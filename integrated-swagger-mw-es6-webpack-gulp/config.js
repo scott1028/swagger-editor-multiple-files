@@ -2,6 +2,7 @@
 
 const webpack = require('webpack');
 const nodeExternals = require('webpack-node-externals');
+const BrowserSyncPlugin = require('browser-sync-webpack-plugin')
 const path = require('path');
 
 const config = {
