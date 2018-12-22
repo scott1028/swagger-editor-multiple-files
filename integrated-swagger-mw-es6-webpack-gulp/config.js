@@ -58,4 +58,5 @@ if(apiConfig.mode === 'production') {
   delete apiConfig.plugins;
 }
 
-module.exports = [apiConfig];
+// Unresolved: multiple config will cause HMR incorrect.
+module.exports = apiConfig;
