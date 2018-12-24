@@ -7,8 +7,12 @@ const dotenv = require('dotenv');
 
 dotenv.config();
 
+// Ref: https://github.com/lorenwest/node-config/wiki/Environment-Variables
+// This will detect ./config/*** folder, it's a nodejs mechanism
+const mode = process.env.NODE_ENV || 'development';
+
 const apiConfig = {
-  mode: 'production',  // `development|production`, such as minify output, etc, it will set to `process.env.NODE_ENV`
+  mode,  // `development|production`, such as minify output, etc, it will set to `process.env.NODE_ENV`
   entry: {
     dist: [
       './src/backend/index.es6.js',  // this is multiple entrypoint combined with gulp.src
@@ -43,14 +47,10 @@ const apiConfig = {
   },
   plugins: [
     new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development')
+      'process.env.NODE_ENV': JSON.stringify(mode),
     }),
   ],
 };
-
-// Ref: https://github.com/lorenwest/node-config/wiki/Environment-Variables
-// This will detect ./config/*** folder, it's a nodejs mechanism
-apiConfig.mode = process.env.NODE_ENV || apiConfig.NODE_ENV;
 
 if(apiConfig.mode === 'development') {
   apiConfig.watch = true;
