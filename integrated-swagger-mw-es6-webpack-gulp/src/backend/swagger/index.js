@@ -8,6 +8,9 @@ import swaggerDocument from '../../../dist/swagger.yaml';  // handled by `js-yam
 const SWAGGER_YAML = `dist/swagger.yaml`;
 
 export default app => {
+  if(process.env.NODE_ENV.includes('production'))
+    return;
+
   SwaggerExpress.create({  // copy fragment source code from swagger CLI tool of nodejs, there is not any document for this.
     appRoot: __dirname, // required config
     swaggerFile: SWAGGER_YAML,  // according to trace `swagger-node` project

@@ -41,8 +41,3 @@ Post:
       type: string
     author:
       type: string
-
-Posts:
-  type: array
-  items:
-    $ref: '#/definitions/Post'

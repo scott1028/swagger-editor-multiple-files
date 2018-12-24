@@ -6,6 +6,9 @@ const jsonServerRouter = jsonServer.router('src/fixtures/json-server-db.json'); 
 const jsonServerMiddlewares = jsonServer.defaults();  // include cors, json-parse, log, etc
 
 export default app => {
+  if(process.env.NODE_ENV.includes('production'))
+    return;
+
   // allow cors for swagger
   app.use(jsonServerMiddlewares);  // app.use(cors());
 
