@@ -7,9 +7,12 @@ import session from 'express-session';
 import usersGenerator from '../../fixtures/users';
 import books from '../../fixtures/books.json';
 
+// Ref: https://github.com/expressjs/session#options
 const sessCfg = {
   secret: 'keyboard cat',
-  cookie: {}
+  cookie: {},
+  resave: true,
+  saveUninitialized: true,
 };
 
 const router = express.Router();
