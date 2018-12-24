@@ -1,15 +1,23 @@
 'use strict';
 
 import express from 'express';
+import session from 'express-session';
 
 // fake data
 import usersGenerator from '../../fixtures/users';
 import books from '../../fixtures/books.json';
 
+const sessCfg = {
+  secret: 'keyboard cat',
+  cookie: {}
+};
+
 const router = express.Router();
 const users = usersGenerator();
 
 export default app => {
+  app.use(session(sessCfg));
+
   app.get('/', function(req, res) {
     res.send('Hello Mock API & SwaggerUI!');
   });
@@ -41,6 +49,18 @@ export default app => {
 
   router.get('/users/:id/books', function(req, res) {
     res.send(books);
+  });
+
+  router.post('/login', function(req, res) {
+    req.session.loggedIn = {
+      userId: 1,
+    };
+    res.status(202).send({});
+  });
+
+  router.get('/logout', function(req, res) {
+    delete req.session.loggedIn;
+    res.status(202).send({});
   });
 
   app.use('/api', router);

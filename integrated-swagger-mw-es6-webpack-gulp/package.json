@@ -37,6 +37,7 @@
     "cors": "^2.8.5",
     "dotenv": "^6.2.0",
     "express": "^4.16.4",
+    "express-session": "^1.15.6",
     "gulp-util": "^3.0.8",
     "json-server": "^0.14.0",
     "swagger": "^0.7.5",
