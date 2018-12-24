@@ -8,7 +8,7 @@ const dotenv = require('dotenv');
 dotenv.config();
 
 const apiConfig = {
-  mode: 'development',  // `development|production`, such as minify output, etc, it will set to `process.env.NODE_ENV`
+  mode: 'production',  // `development|production`, such as minify output, etc, it will set to `process.env.NODE_ENV`
   entry: {
     dist: [
       './src/backend/index.es6.js',  // this is multiple entrypoint combined with gulp.src
@@ -51,6 +51,7 @@ const apiConfig = {
 // Ref: https://github.com/lorenwest/node-config/wiki/Environment-Variables
 // This will detect ./config/*** folder, it's a nodejs mechanism
 apiConfig.mode = process.env.NODE_ENV || apiConfig.NODE_ENV;
+
 if(apiConfig.mode === 'development') {
   apiConfig.watch = true;
   apiConfig.entry.dist.unshift('webpack/hot/poll?1000');  // HMR Hook, it's in `node_modules/webpack/hot/poll.js`
@@ -58,13 +59,12 @@ if(apiConfig.mode === 'development') {
     ...apiConfig.output,
     hotUpdateChunkFilename: '.hot/[id].[hash].hot-update.js',  // move lots of *.hot-update.js files to `.hot` folder
     hotUpdateMainFilename: '.hot/[hash].hot-update.json',  // move lots of *.hot-update.json files to `.hot` folder
-  }
+  };
   apiConfig.plugins = [
     new webpack.HotModuleReplacementPlugin(),  // <-- BTW config.devServer.hot = { ... } if for devServer of webpack without 'webpack/hot/poll?1000' mixin
     new webpack.NamedModulesPlugin(),
     ...apiConfig.plugins,
   ];
-  delete apiConfig.plugins;
 }
 
 // Unresolved: multiple config will cause HMR incorrect.
