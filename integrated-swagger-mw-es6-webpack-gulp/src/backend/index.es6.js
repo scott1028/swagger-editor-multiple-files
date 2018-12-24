@@ -16,6 +16,9 @@ server.listen(port, function() {
 
 // for support HMR of webpack, according to `https://webpack.js.org/guides/hot-module-replacement/`
 if (module.hot) {
+  // avoid ETag Cache when using with Browsersync, no effect for static file serve logic of express
+  app.set('etag', false); // turn off
+
   module.hot.accept('./app.es6', function() {
     console.log('Accepting the updated module!');
 

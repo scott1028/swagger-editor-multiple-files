@@ -52,6 +52,8 @@ $ yarn lift:edit
 
 - This project just integrates webpack with gulp.
 - Notice! `echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p` for resolution when gulp throw ENOSPC error.
+- Express will handle `ETag` to control cache mechanism by default so when using with `Browsersync` sometime it will not connect websocket due to same ETag cause a old cached data retrieval.
+- Ref: https://stackoverflow.com/questions/15191511/disable-etag-header-in-express-node-js
 
 ### What's following package for?
 
