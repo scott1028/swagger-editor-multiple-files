@@ -20,5 +20,6 @@ produces:
 paths:
   @@include('./paths/Users.yaml')
   @@include('./paths/Books.yaml')
+  @@include('./paths/Posts.yaml')
 definitions:
   @@include('./definitions.yaml')

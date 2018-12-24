@@ -10,7 +10,7 @@ export default app => {
   app.use(jsonServerMiddlewares);  // app.use(cors());
 
   // optional Way#2: api scheme provided by json-server
-  app.use('/api-v2', jsonServerRouter);
+  app.use('/api', jsonServerRouter);
 
   // override some api for making it correspond to your client,
   // if you override path is not existing in json-server-database, it will return 404 status code.

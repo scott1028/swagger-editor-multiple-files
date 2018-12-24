@@ -3,7 +3,6 @@
 import SwaggerExpress from 'swagger-express-mw';
 import SwaggerUi from 'swagger-ui-express';
 import swaggerDocument from '../../../dist/swagger.yaml';  // handled by `js-yaml-loader` of webpack's loader
-// const swaggerDocument = yaml.safeLoad(fs.readFileSync(SWAGGER_YAML, 'utf8'));
 
 // integrated with swagger interactive doc mechanism
 const SWAGGER_YAML = `dist/swagger.yaml`;

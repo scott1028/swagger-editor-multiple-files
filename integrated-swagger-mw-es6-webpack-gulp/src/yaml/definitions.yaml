@@ -31,3 +31,18 @@ Books:
   type: array
   items:
     $ref: '#/definitions/Book'
+
+Post:
+  properties:
+    id:
+      type: number
+      uniqueItems: true
+    title:
+      type: string
+    author:
+      type: string
+
+Posts:
+  type: array
+  items:
+    $ref: '#/definitions/Post'
