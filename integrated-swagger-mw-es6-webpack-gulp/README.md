@@ -6,7 +6,7 @@
 
 ##### src/
 
-##### src/backend/config.js
+##### src/backend/app.es6.js
 
 - Your api server is here.
 
@@ -24,12 +24,12 @@
 
 ```
 # .env
-MODE=production
+NODE_ENV=production
 ```
 
 ```
 # .env
-MODE=development
+NODE_ENV=development
 ```
 
 ### How to run
