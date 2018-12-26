@@ -1,0 +1,3 @@
+[submodule "integrated-swagger-mw-es6-webpack-gulp"]
+	path = integrated-swagger-mw-es6-webpack-gulp
+	url = git@github.com:scott1028/sct-fullstack-startkit.git
